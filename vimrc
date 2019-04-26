@@ -28,7 +28,7 @@ set cpoptions+=$               " When making a change, don't
                                " put a `$` sign at the end of
                                " the changed text.
 
-set colorcolumn=73             " Highlight certain column(s).
+set colorcolumn=80             " Highlight certain column(s)
 set cursorline                 " Highlight the current line.
 set encoding=utf-8 nobomb      " Use UTF-8 without BOM.
 set history=5000               " Increase command line history.
@@ -119,21 +119,39 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'vim-syntastic/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'prettier/vim-prettier'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'mhartington/nvim-typescript'
+Plugin 'w0rp/ale'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 
 filetype on
 filetype plugin indent on
+
+" ----------------------------------------------------------------------
+" | Plugins - Syntastic
+" ----------------------------------------------------------------------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:sytastyc_typescript_checkers = ['tsuquyomi']
 
 " ----------------------------------------------------------------------
 " | Plugins - CtrlP
@@ -170,6 +188,11 @@ if executable('ag')
 endif
 
 " ----------------------------------------------------------------------
+" | Plugins - Deoplete
+" ----------------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1
+
+" ----------------------------------------------------------------------
 " | Color Scheme                                                       |
 " ----------------------------------------------------------------------
 
@@ -203,6 +226,7 @@ let mapleader = ","
 " [,t ] Toggle NERDTree.
 
 map <leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -234,5 +258,13 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+" Fugitive
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gvdiff<CR>
+nmap gdh :diffget //2<CR>
+nmap gdl :diffget //3<CR>
 
 " - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
