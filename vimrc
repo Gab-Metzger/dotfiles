@@ -133,6 +133,7 @@ Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'mhartington/nvim-typescript'
 Plugin 'w0rp/ale'
 Plugin 'mattn/emmet-vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 

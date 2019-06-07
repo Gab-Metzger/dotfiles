@@ -91,6 +91,9 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Ho
 export PATH=${PATH}:/Development/android-sdk/platform-tools:/Development/android-sdk/tools
 export PATH=${PATH}:/Users/gabrielmetzger/Library/Python/2.7/bin
 
+# Go
+export GOPATH=$HOME/Documents/Workspace/go
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
